@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Project 4 - Phase 1: Governance, Subscription Placement & Critical Tagging
+    Phase 1: Governance, Subscription Placement & Critical Tagging
     Target Subscription: sub-ent-platform-prod (SUB_ID)
 #>
 
