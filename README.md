@@ -118,11 +118,16 @@ To satisfy SC-100 zero-trust identity requirements, standing access was complete
 
 Entra ID PIM Activation: Configured JIT Contributor role elevation at subscription level (sub-ent-platform-prod), requiring justification, MFA verification, and ticket correlation upon activation.
 
+<img width="1801" height="451" alt="10-pim-eligible-assignments png" src="https://github.com/user-attachments/assets/a43ed1bd-c417-4dc1-b2c4-9a0c3fa03670" />
+
+
 Conditional Access Hardening: Implemented CA-ZeroTrust-Admin-Baseline with dual controls enforced simultaneously:
 
 Grant Control 1: Require Multi-Factor Authentication (MFA).
 
 Grant Control 2: Require device to be marked as compliant in Microsoft Intune.
+<img width="1771" height="700" alt="11-conditional-access-policy png" src="https://github.com/user-attachments/assets/8acfd367-2427-4087-a38d-c41f2236ab9d" />
+
 
 Platform Scope Exception: Four device platforms were deliberately excluded to maintain admin access in a personal tenant without Intune enrollment, targeting the compliance requirement directly at designated workload admin accounts rather than locking out the global admin session itself.
 
@@ -200,6 +205,39 @@ LocalAddress Network     NextHop  SourcePeer Origin AsPath Weight
 10.0.2.4     10.1.1.0/24 10.0.1.4 10.0.1.4   EBgp   65001  32768
 ```
 
+## 📸 Portal Evidence & Infrastructure Screenshots
 
+### 1. Management Group Hierarchy
+> Validates enterprise-aligned Azure Landing Zone governance structure with segregated Workload, Platform, and Sandbox management groups.
+
+![Management Group Hierarchy](./docs/images/01-mg-hierarchy.png.jpeg)
+
+---
+
+### 2. Resource Group Scope Breakdown
+> Confirms resource isolation across production network hubs (`rg-prd-hub-network-001`) and Private Link applications (`rg-prd-app-privatelink-001`).
+
+![Resource Groups](./docs/images/02-resource-groups.png.jpeg)
+
+---
+
+### 3. Resource Group Metadata & Tagging Policy
+> Verifies standard enterprise metadata tags applied at the hub resource group level (`Environment`, `CostCenter`, `SecurityLevel`, `Owner`).
+
+![Resource Group Tags](./docs/images/03-rg-tags.png.jpeg)
+
+---
+
+### 4. Hub Virtual Network Subnet Allocation
+> Displays subnet partitioning within `vnet-hub-001` (`HubSubnet`, `RouteServerSubnet`, and dedicated `AzureFirewallSubnet`).
+
+![Hub Subnets](./docs/images/03-vnet-subnets.png.jpeg)
+
+---
+
+### 5. Hub-to-Spoke VNet Peering
+> Confirms bidirectional, synchronized peering status (`Fully Synchronized` / `Connected`) between `vnet-hub-001` and `vnet-spoke-001`.
+
+![VNet Peering Status](./docs/images/04-vnet-peering.png.jpeg)
    
     
